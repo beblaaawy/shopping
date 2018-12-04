@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use App\User;
 use Validator;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ class RegisterController extends Controller
 			return redirect('/login');
 		}
 
+		$secret = str_random(90);
 
 		$a = new User;
 		$a->first_name = $request->first_name;
@@ -32,8 +34,14 @@ class RegisterController extends Controller
 		$a->email = $request->email;
 		$a->password = $request->password;
 		$a->gender = $request->gender;
+		$a->verify_secret = $secret;
 
 		$a->save();
+
+		Mail::send('mail.verification', ['name' => $request->first_name, 'secret' => $secret], function($mail) {
+			$mail->to(request()->email);
+			$mail->subject('Account Verification');
+		});
 
 		session()->flash('success', 'You have registered successfully, please login!!');
 

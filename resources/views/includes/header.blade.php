@@ -22,6 +22,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+	<style type="text/css">
+		[v-cloak], .v-cloak {
+			display: none;
+		}
+	</style>
+
 </head><!--/head-->
 
 <body>
@@ -91,6 +97,7 @@
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="/login"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="/logout"><i class="fa fa-power-off"></i> Logout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -119,7 +126,6 @@
 										<li><a href="product-details.html">Product Details</a></li> 
 										<li><a href="checkout.html">Checkout</a></li> 
 										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="/login">Login</a></li> 
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>

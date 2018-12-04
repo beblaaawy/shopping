@@ -16,10 +16,25 @@ Route::get('/', 'HomePageController@index');
 Route::get('/home', 'HomePageController@index');
 
 Route::get('/login', 'LoginPageController@index')->middleware('guest');
+Route::get('/logout', 'LoginPageController@logout')->middleware('auth');
 
 Route::post('/login', 'LoginPageController@process')->middleware('guest');
 
 Route::post('/register', 'RegisterController@store')->middleware('guest');
+
+Route::get('/verify/email/{secret}', function ($secret){
+	$user = App\User::where('verify_secret', $secret)->first();
+	if ($user) {
+		$user->verified = true;
+		$user->verify_secret = null;
+
+		$user->save();
+		session()->flash('success', 'Yuor email has been verified successfully!');
+	} else {
+		session()->flash('error', 'Your verification link is expired!');
+	}
+	return redirect('/login');
+});
 
 // Route::get('/admin/products', 'Admin\ProductsController@index')->middleware('admin', 'auth');
 
@@ -32,7 +47,11 @@ Route::get('/product/details/{id}', 'ProductDetailsController@index');
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => '/admin', 'namespace' => 'Admin'], function(){
 
 	Route::get('/products', 'ProductsController@index');
+	Route::get('/products/create', 'ProductsController@create');
+	Route::post('/products/create', 'ProductsController@store');
 	Route::get('/categories', 'CategoriesController@index');
+	Route::get('/categories/create', 'CategoriesController@create');
+	Route::post('/categories/create', 'CategoriesController@store');
 	Route::get('/users', 'UsersController@index');
 });
 

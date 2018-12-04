@@ -164,5 +164,12 @@
 	<script src="/js/price-range.js"></script>
     <script src="/js/jquery.prettyPhoto.js"></script>
     <script src="/js/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	@yield('scripts')
+
+
 </body>
 </html>

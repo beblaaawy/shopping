@@ -31,6 +31,11 @@ class LoginPageController extends Controller
 
 		$user = User::where('email', $request->email)->first();
 
+		if (!$user->verified) {
+			session()->flash('error', 'Your email is not verified!');
+			return back();
+		}
+
 		if ($user->password == $request->password) {
 			Auth::login($user, true);
 			return redirect('/home');
@@ -38,5 +43,10 @@ class LoginPageController extends Controller
 			session()->flash('error', 'your password is not correct.');
 			return back();
 		}
+	}
+
+	public function logout () {
+		Auth::logout();
+		return redirect('/login');
 	}
 }

@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('gender', 10)->default('male');
             $table->string('phone', 30)->nullable();
             $table->string('zipcode', 10)->nullable();
+            $table->boolean('verified')->default(false);
+            $table->string('verify_secret', 200)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
