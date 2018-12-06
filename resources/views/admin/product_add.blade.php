@@ -1,6 +1,6 @@
+@extends('app')
 
-@include('includes/header')
-
+@section('content')
 <section id="product-add"><!--form-->
 	<div class="container">
 		<div class="row">
@@ -62,8 +62,9 @@
 	</div>
 </section><!--/form-->
 	
-@include('includes/footer')
+@endsection
 
+@section('scripts')
 <script type="text/javascript">
 	new Vue({
 		el: '#product-add',
@@ -94,3 +95,4 @@
 		}
 	})
 </script>
+@endsection

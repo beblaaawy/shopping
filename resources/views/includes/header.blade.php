@@ -28,6 +28,8 @@
 		}
 	</style>
 
+	@yield('styles')
+
 </head><!--/head-->
 
 <body>

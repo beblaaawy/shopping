@@ -1,5 +1,6 @@
+@extends('app')
 
-@include('includes/header')
+@section('content')
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
@@ -515,5 +516,4 @@
 			</div>
 		</div>
 	</section>
-	
-@include('includes/footer')
+@endsection

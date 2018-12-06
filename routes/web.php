@@ -46,6 +46,8 @@ Route::get('/product/details/{id}', 'ProductDetailsController@index');
 
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => '/admin', 'namespace' => 'Admin'], function(){
 
+	Route::get('/jobs', 'JobsController@index');
+	Route::get('/jobs/json', 'JobsController@getJson');
 	Route::get('/products', 'ProductsController@index');
 	Route::get('/products/create', 'ProductsController@create');
 	Route::post('/products/create', 'ProductsController@store');
@@ -55,6 +57,24 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => '/admin', 'namespac
 	Route::get('/users', 'UsersController@index');
 });
 
+
+Route::get('/test', function() {
+	$id = 1;
+
+	$category = App\Category::with('products')->find($id);
+	// $produts = App\Product::where('category_id', $id)->get();
+	// return $products = $category->products;
+
+	$id = 1;
+	return $product = App\Product::with('category')->find($id);
+	// $category = App\Category::where('id', $product->category_id)->first();
+	return $category = $product->category;
+});
+
+Route::get('/jobs', function () {
+
+	return App\Job::all();
+});
 // get, all, first, avg, count
 
 // Query builder

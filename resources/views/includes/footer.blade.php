@@ -167,9 +167,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+	<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+	<!-- <script type="text/javascript">
+		
+		Vue.options.delimiters = ['[[', ']]']
 
-	@yield('scripts')
-
-
-</body>
-</html>
+	</script>
+ -->
